@@ -1,0 +1,79 @@
+Lab Programs
+1.	Write a C program depth first search (DFS) using array.
+2.	//program for depth first search using array
+3.	#include<stdio.h>
+4.	int g[10][10],visited[10],n;
+5.	//Beginning of DFS program
+6.	void DFS(int i) {
+7.	    int j;
+8.	    printf("\n%d”,i);
+9.	    visited[i]=1;
+10.	    for (j=0;j<n;j++){
+11.	        if (!visited[j]&g[i][j]==1)
+12.	        DFS(j);
+13.	    }
+14.	}
+15.	//End of DFS program
+16.	//Beginning of main program
+17.	void main() {
+18.	    int i,j;
+19.	    printf("Enter number of vertices:");
+20.	    scanf("%d",&n);
+21.	    printf("\nEnter adjancency matrix of the graph");
+22.	    for (i=0;i<n;i++){
+23.	        for (j=0;j<n;j++){
+24.	            scanf("%d",&g[i][j]);
+25.	        }
+26.	    }
+27.	    for(i=0;i<n;i++){
+28.	        visited[i]=0;
+29.	          DFS(0);
+30.	    }
+31.	}
+32.	//End of main program
+33.	//End of the total program
+34.	Write a C program breath first search (BFS) using array.
+35.	Program breadth first search
+36.	#include<stdio.h>
+37.	int a[20][20],q[20],visited[20],n,i,j,f=0,r=-1;
+38.	//Beginning of BFS program
+39.	void bfs(int v){
+40.	    for (i=1;i<=n;i++){
+41.	        if (a[v][i]&&!visited[i]){
+42.	            q[++r]=i;
+43.	            if(f<=r){ 
+44.	                visited[q[f]]=1;
+45.	                bfs(q[f++]);
+46.	            }
+47.	        }
+48.	    }
+49.	}
+50.	//End of BFS program
+51.	//Beginning of main of program
+52.	void main(){
+53.	    int v;
+54.	    printf("\nEnter the number of vertices:");
+55.	    scanf("%d",&n);
+56.	    for (i=1;i<=n;i++){
+57.	        q[i]=0;
+58.	        visited[i]=0;
+59.	    }
+60.	    printf("\nEnter graph data in matrix form:\n");
+61.	    for (i=1;i<=n;i++) {
+62.	        for (j=1;j<=n;j++){
+63.	            scanf("%d",&a[i][j]);
+64.	            printf("\nEnter the starting vertex:");
+65.	            scanf("%d",&v);
+66.	            bfs(v);
+67.	            printf("\nThe node which are reachable are:\n");
+68.	            for (i=1;i<=n;i++){
+69.	                if(visited[i])
+70.	                printf("%d\t",i);
+71.	                else 
+72.	                printf("\nBFS is not possible");
+73.	            }
+74.	        }
+75.	    }
+76.	}
+77.	//End of main program
+78.	//End of total program
